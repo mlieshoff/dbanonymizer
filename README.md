@@ -71,22 +71,18 @@ For a full list of data generation strategies, see the docs on [strategyfiles](h
 
 ## Usage
 1. Write a [strategyfile](https://github.com/jerometwell/pynonymizer/blob/master/doc/strategyfiles.md) for your database
-1. Set environment variables in local.env file
+1. Set environment variables in project.env file
     ```
     STRATEGY_FILE=
     DUMP_INPUT_FILE=
     DUMP_OUTPUT_FILE=
-    SEED_ROWS=
-    LOCALE=
     ```
     If your dump has CREATE DATABASE statement, please make sure ```DB_NAME``` variable has same db name or delete this CREATE DATABASE statement from dump file.
-1. Choose what DB you use according your dump. Comment/Uncomment mysql or postgres section to use appropriate connection.
+1. Choose what DB you use according your dump, by just passing one of the db env filenames to the ```run.sh``` call.
     ```
-    DB_TYPE=mysql
-    DB_HOST=db-mysql
-    DB_PORT=3306
-    DB_NAME=dl
-    DB_USER=root
-    DB_PASSWORD=rootpass```
-1. Run command ```./run.sh```. Script will create all needed containers and then delete it after work will be done.
-    Anonymized dump will be placed in this path: ```DUMP_OUTPUT_FILE```
+   mariadb.env
+   mysql.env
+   postgres.env
+    ```
+1. Run command ```./run.sh mysql.env project.env``` as example for doing a MySQL dump of project ```project```.
+Script will create all needed containers and then delete it after work will be done. Anonymized dump will be placed in this path: ```DUMP_OUTPUT_FILE```

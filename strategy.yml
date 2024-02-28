@@ -1,0 +1,6 @@
+tables:
+  users:
+    columns:
+      profile_path:
+        type: fake_update
+        fake_type: file_path
